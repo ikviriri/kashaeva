@@ -1,0 +1,15 @@
+/* Button.module.css */
+.button {
+  width: 100%;
+  background: none;
+  border: 1px solid #dcd8d0;
+  padding: 10px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #173d2b;
+  color: #ffffff;
+}

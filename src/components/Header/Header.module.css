@@ -1,0 +1,39 @@
+/* Header.module.css */
+.header {
+  padding: 30px 0;
+}
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-size: 28px;
+  font-weight: 600;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+}
+.link, .active {
+  font-size: 14px;
+  color: #6b726e;
+}
+.active {
+  color: #1a2f24;
+  border-bottom: 1px solid #1a2f24;
+  padding-bottom: 4px;
+}
+.link:hover {
+  color: #1a2f24;
+}
+.icons {
+  display: flex;
+  gap: 20px;
+}
+.icon {
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: #1a2f24;
+}

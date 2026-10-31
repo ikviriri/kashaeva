@@ -1,0 +1,21 @@
+.container {
+  padding: 100px 20px;
+  text-align: center;
+  min-height: 50vh;
+}
+.title {
+  font-size: 100px;
+  color: #173d2b;
+  margin-bottom: 20px;
+}
+.text {
+  font-size: 18px;
+  color: #6b726e;
+  margin-bottom: 30px;
+}
+.link {
+  font-size: 16px;
+  color: #173d2b;
+  border-bottom: 1px solid #173d2b;
+  padding-bottom: 2px;
+}

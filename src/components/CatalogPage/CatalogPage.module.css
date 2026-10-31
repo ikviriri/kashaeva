@@ -1,0 +1,46 @@
+.catalog {
+  padding: 40px 0 80px;
+}
+.label {
+  font-size: 12px;
+  color: #6b726e;
+  margin-bottom: 10px;
+}
+.title {
+  font-size: 48px;
+  color: #173d2b;
+  margin-bottom: 10px;
+}
+.subtitle {
+  font-size: 16px;
+  color: #6b726e;
+  margin-bottom: 40px;
+}
+.filters {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+.input {
+  padding: 12px 16px;
+  border: 1px solid #dcd8d0;
+  background: transparent;
+  width: 300px;
+  font-family: inherit;
+}
+.sort {
+  padding: 12px 16px;
+  border: 1px solid #dcd8d0;
+  background: transparent;
+  cursor: pointer;
+}
+.count {
+  font-size: 14px;
+  color: #6b726e;
+  margin-bottom: 20px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
