@@ -11,8 +11,7 @@ export function Header() {
           <nav className={s.nav}>
             <Link to="/" className={s.active}>Главная</Link>
             <Link to="/catalog" className={s.link}>Каталог</Link>
-            {/* О нас пока оставим обычной ссылкой, если нет страницы */}
-            <a href="/about" className={s.link}>О нас</a> 
+            <Link to="/about" className={s.link}>О нас</Link>
           </nav>
 
           {/* ... иконки ... */}
