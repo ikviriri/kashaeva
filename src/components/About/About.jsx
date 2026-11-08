@@ -1,11 +1,10 @@
 import s from "./About.module.css";
-import banner2Img from "../../assets/banner2.png"; // <-- Вторая картинка
 
 export function About() {
   return (
     <section className={s.section}>
       <div className={s.imageBox}>
-        <img src={banner2Img} alt="Растения" />
+        <img src="/banner2.png" alt="Растения" />
       </div>
       <div className={s.content}>
         <p className={s.label}>О МАГАЗИНЕ MOSS</p>

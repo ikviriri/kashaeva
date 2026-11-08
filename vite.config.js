@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+// https://vite.dev/config/
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: '/kashaeva/', // <-- ВАЖНО: именно kashaeva и косые черты
-})
+  // Если мы собираем проект для деплоя (build), используем '/kashaeva/'
+  // Если запускаем локально (serve), используем '/'
+  base: command === 'build' ? '/kashaeva/' : '/',
+}))

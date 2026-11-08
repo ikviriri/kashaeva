@@ -1,76 +1,56 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import s from "./ProductPage.module.css";
 
-// Проверь пути к картинкам! 
-// Если у тебя они лежат в src/assets, то путь должен быть ../../assets/название.png
-import monsteraImg from "../../assets/monstera.png"; 
-import ficusImg from "../../assets/ficus.png"; 
-import kashpoImg from "../../assets/kashpo.png"; 
-import bannerImg from "../../assets/banner.png"; 
-
 export function ProductPage() {
+  const [product, setProduct] = useState({});
+  const [category, setCategory] = useState(null);
+  const { id } = useParams(); 
+
+  useEffect(() => {
+    async function getProduct() {
+      try {
+        const res = await fetch("http://localhost:3000/products/" + id);
+        if (!res.ok) throw new Error("Товар не найден");
+        const productFromServer = await res.json();
+        setProduct(productFromServer);
+
+        const catRes = await fetch("http://localhost:3000/categories/" + productFromServer.categoryId);
+        const categoryFromServer = await catRes.json();
+        setCategory(categoryFromServer);
+      } catch (e) {
+        console.error(e.message);
+      }
+    }
+    getProduct();
+  }, [id]);
+
+  if (!product.title) return <p style={{ padding: '50px' }}>Загрузка...</p>;
+
   return (
     <section className={s.product}>
       <div className="container">
         <div className={s.breadcrumbs}>
-          Главная / Каталог / Монстера делициоза
+          Главная / Каталог / {product.title}
         </div>
 
         <div className={s.mainContent}>
-          {/* Левая часть с картинками */}
           <div className={s.images}>
-            <img src={monsteraImg} alt="Монстера" className={s.mainImage} />
-            <div className={s.thumbnails}>
-              <img src={ficusImg} alt="Фикус" />
-              <img src={kashpoImg} alt="Кашпо" />
-              <img src={bannerImg} alt="В интерьере" />
-            </div>
+            <img src={product.image} alt={product.title} className={s.mainImage} />
           </div>
 
-          {/* Правая часть с информацией */}
           <div className={s.info}>
-            <p className={s.category}>КОМНАТНЫЕ РАСТЕНИЯ</p>
-            <h1 className={s.title}>Монстера делициоза</h1>
-            <p className={s.price}>2 490 ₽</p>
-            <p className={s.desc}>
-              Крупные резные листья и выразительный силуэт делают монстеру эффектным акцентом в интерьере. Хорошо чувствует себя при рассеянном свете.
-            </p>
-
+            {category && <p className={s.category}>{category.title.toUpperCase()}</p>}
+            <h1 className={s.title}>{product.title}</h1>
+            <p className={s.price}>{product.price} ₽</p>
+            <p className={s.desc}>{product.description}</p>
+            
             <div className={s.divider}></div>
 
-            <div className={s.details}>
-              <p className={s.detailLabel}>Размер растения</p>
-              <p className={s.detailValue}>Высота 30–40 см</p>
-
-              <p className={s.detailLabel}>Уход</p>
-              <p className={s.detailValue}>Рассеянный свет · Полив после подсыхания почвы</p>
-            </div>
-
-            <div className={s.actions}>
-              <p className={s.detailLabel}>Количество</p>
-              <div className={s.buyRow}>
-                <div className={s.counter}>
-                  <button>-</button>
-                  <span>1</span>
-                  <button>+</button>
-                </div>
-                <button className={s.addBtn}>Добавить в корзину</button>
-              </div>
-              <button className={s.favBtn}>♡ Добавить в избранное</button>
-            </div>
-
-            <div className={s.benefits}>
-              <p>✓ Надёжная упаковка</p>
-              <p>✓ Инструкция по уходу</p>
-              <p>✓ Бережная доставка</p>
+            <div className={s.buyRow}>
+              <button className={s.addBtn}>Добавить в корзину</button>
             </div>
           </div>
-        </div>
-
-        <div className={s.aboutPlant}>
-          <h2 className={s.aboutTitle}>О растении</h2>
-          <p className={s.aboutText}>
-            Монстера любит яркий рассеянный свет и умеренный полив. Протирайте листья влажной мягкой тканью и поворачивайте растение время от времени, чтобы крона развивалась равномерно.
-          </p>
         </div>
       </div>
     </section>

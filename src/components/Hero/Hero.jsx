@@ -1,5 +1,5 @@
 import s from "./Hero.module.css";
-import bannerImg from "../../assets/banner.png"; 
+
 
 export function Hero() {
   return (
@@ -14,7 +14,7 @@ export function Hero() {
           <button className={s.button}>В каталог →</button>
         </div>
         <div className={s.imageBox}>
-          <img src={bannerImg} alt="Интерьер" />
+          <img src="/banner.png" alt="Интерьер" /> 
         </div>
       </div>
     </section>

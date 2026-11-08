@@ -49,3 +49,8 @@
 @media (max-width: 576px) {
   .card { width: 100%; }
 }
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+}
